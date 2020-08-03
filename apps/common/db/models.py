@@ -16,7 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Choice(str):
-    def __new__(cls, value, label):
+    def __new__(cls, value, label=''):  # `deepcopy` 的时候不会传 `label`
         self = super().__new__(cls, value)
         self.label = label
         return self

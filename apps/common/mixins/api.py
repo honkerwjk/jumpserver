@@ -223,6 +223,7 @@ class RelationMixin:
         self.through = getattr(self.m2m_field.model, self.m2m_field.attname).through
 
     def get_queryset(self):
+        # 注意，此处拦截了 `get_queryset` 没有 `super`
         queryset = self.through.objects.all()
         return queryset
 
